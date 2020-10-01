@@ -1,0 +1,30 @@
+# Naive approach for computing exponentiation x^n which is computed as x*x*x*....x (n-times)
+# time complexity is x^n
+
+def expo(x,n):
+    if(n==0):
+        return 1
+    else if(n%2==0):
+        return binaryExpo(x*x,n/2)
+      
+        
+x,n=map(int,input().split())
+print(expo(x,n))
+
+
+
+#----------------------------------------------------------------------------------------------------
+# Optimised approach
+# time complexity is log(n)
+
+def binaryExpo(x,n):
+    if(n==1):
+        return x
+    elif(n%2==0):
+        return binaryExpo(x*x,n/2)
+    else:
+        return x*binaryExpo(x*x,(n-1)/2)
+        
+        
+x,n=map(int,input().split())
+print(binaryExpo(x,n))
